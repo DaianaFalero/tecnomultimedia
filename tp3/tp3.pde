@@ -5,7 +5,6 @@
 
 
 String[] historia = new String[18];
-
 PImage f1;
 PImage f2;
 PImage f3;
@@ -13,8 +12,7 @@ PImage f4;
 PImage f5;
 PImage f6;
 PImage f7;
-PImage f8;
-PImage f9;
+
 
 int cbx1=120;
 int cbx2=440;
@@ -49,7 +47,7 @@ void setup(){
    f5 = loadImage("faro5.jpg"); //
    f6 = loadImage("faro6.jpg"); //
    f7 = loadImage("faro7.jpg");
-   //f8 = loadImage("faro8.jpg");
+
 }  
 
    
