@@ -1,7 +1,7 @@
 //Falero Daiana
 //Comision 1
 // tp3 
-
+//https://youtu.be/rYhhnekja9w
 
 
 String[] historia = new String[18];
@@ -42,10 +42,14 @@ void setup(){
   historia[14] = /*INVENTADA B */ "McDunn decide que lo sobrepensaría pero que no es algo que crea que puede reepensar. \n Dias despues, McDunn le cuenta a narrador que al final si se quedaría pero que trabajaría \n muchas horas menos";  
  
  
-   f1 = loadImage("faro1.jpg");
-   f2 = loadImage("faro2.jpg");
+   f1 = loadImage("faro1.jpg"); //
+   f2 = loadImage("faro2.jpg"); //
    f3 = loadImage("faro3.jpg");
    f4 = loadImage("faro4.jpg");
+   f5 = loadImage("faro5.jpg"); //
+   f6 = loadImage("faro6.jpg"); //
+   f7 = loadImage("faro7.jpg");
+   //f8 = loadImage("faro8.jpg");
 }  
 
    
@@ -91,9 +95,6 @@ boolean clic(int x, int y){
 }  
 
 
-
-
-
 void draw(){
  
      background(0);  
@@ -106,40 +107,40 @@ void draw(){
         pantalla2B(1,f2,"","Siguiente");
        
       if(estado == "creditos")      
-         pantalla2B(12,f2,"","Regresar");
+         pantalla2B(12,f1,"","Regresar");
      
      if(estado == "pant2")
-       pantalla2B(2,f2,"opc A","op B");
+       pantalla2B(2,f5,"opc A","op B");
        
        if(estado == "pant3")                     // OPCIONES     
           pantalla2B(3,f3,"op A2","op B2");     
           
             if(estado == "pant4")              // HISTORIA REAL B
-        pantalla2B(4,f2,"","Siguiente");
+        pantalla2B(4,f5,"","Siguiente");
        
          if(estado == "pant5")                // HISTORIA REAL B
-        pantalla2B(5,f2,"","Siguiente");
+        pantalla2B(5,f5,"","Siguiente");
         
         if(estado == "pant6")                 // HISTORIA REAL B
-        pantalla2B(6,f2,"","Siguiente"); 
+        pantalla2B(6,f5,"","Siguiente"); 
         
    if(estado == "pant7")                      // FINAL N 1B 
-         pantalla2B(7,f4,"","Menú");    
+         pantalla2B(7,f6,"","Menú");    
          
         if(estado == "pant8")               // HISTORIA INVENTADA A
-        pantalla2B(8,f2,"","Siguiente");  
+        pantalla2B(8,f3,"","Siguiente");  
         
            if(estado == "pant9")              // HISTORIA INVENTADA A
-        pantalla2B(9,f2,"","Siguiente");     
+        pantalla2B(9,f3,"","Siguiente");     
                       
         if(estado == "pant10")    
-        pantalla2B(10,f2,"","Menú ");      // FINAL 2A
+        pantalla2B(10,f4,"","Menú ");      // FINAL 2A
         
           if(estado == "pant13")                 // HISTORIA INVENTADA B2
-        pantalla2B(13,f2,"","Siguiente ");    
+        pantalla2B(13,f7,"","Siguiente ");    
         
           if(estado == "pant14")                 // Final 2B
-        pantalla2B(14,f2,"","Menú ");      
+        pantalla2B(14,f7,"","Menú ");      
 }
 
 void mousePressed(){
