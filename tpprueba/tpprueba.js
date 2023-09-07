@@ -1,19 +1,41 @@
+//Falero Daiana
+//Tp4
+//comision 1
+
 let estado="inicio";
 let fondo,btn,pos1=100,pos2=100,x=300,y=200,dirX = 1, dirY=-1,p1=0, p2=0;
+let bx1=50;
+let bx2=200;
+let bx3=500;
+let by1=280
+let by2=300
+
+
+
 
 function preload(){
 fondo = loadImage ("./data/fondo.png");
 btn = loadImage ("./data/boton.png");
+
 }
 
 function setup() {
-createCanvas(600, 400);
+createCanvas(600, 400)
 
 }
+function clic(x, y){
+ 
+  let ok=false;
+ 
+   if(dist(x,y,mouseX,mouseY) < 45){
+         ok = true;
+         }
+ return ok;
+}  
 
 
 function jugar(){
-  background(0);
+  background(254,150,247);
   fill(250);
   rect(20, pos1,10,40);
   rect(570, pos2,10,40);
@@ -87,59 +109,78 @@ function jugar(){
   text("jugador 1:",20,30);
   text(p1,170,30);  
   text("Jugador 2:", 320,30);
-  text(p2, 450,30);
+  text(p2, 480,30);
  
-  if((p1 == 5)||(p2 == 5)){
+  if((p1 == 5)||(p2 == 5)){ /// cantidad de puntos para ganar
    
    estado = "fin";
   }  
  
 }  
-
-
-
-
 function draw() {
 
-
   if(estado == "inicio"){
-   
     image(fondo,0,0);
-    image(btn,480,300,90,70);
-    image(btn,80,300,90,70);
-    image(btn,300,300,90,70);
+    image(btn,460,280,120,100);
+    textSize(25);
+    fill(255,255,255);
+    text ("INICIAR",480,340);
+    image(btn,50,300,120,70);
+     textSize(20);
+    fill(255,255,255);
+    text ("Creditos",80,340);
+    image(btn,200,300,120,70);
+     textSize(20);
+    fill(255,255,255);
+    text ("Reglas",230,340);
+    
+    fill(254,150,247);
+    textSize(150);
+    text("PONG",80,height/2);
+
   }else
     if(estado == "juego"){
      
       jugar();
      
     } else
-      if(estado == "fin"){
-         background(100);
-       
-         if(p1 > p2){
-         text("GANO EL JUGADOR UNO",90,230);
-         }else{
-            text("GANO EL JUGADOR DOS",90,230);
-         }  
-           
-       
-      }  
+    if(estado == "creditos" ){
+      background(255,3,9);
+      textSize(10);
+      text('Juego originalmente creado por Allan Alcorn', width/3, height/2);
      
-   
- 
- 
+    }else 
+    if(estado == "reglas" ){
+      background(254,150,247);
+    } else
+      if(estado == "fin"){
+         background(254,150,247);
+       textSize(50)
+         if(p1 > p2){
+         text("¡GANA JUGADOR UNO!",20,height/2);
+          textSize(15);
+         text ("clic para volver al menú", 210,350);
+         }else{
+            text("¡GANA JUGADOR DOS!",20,height/2);
+             textSize(15);
+           text ("clic para volver al menú", 210,350);
+     }         
+  }  
 }
 
-
+  
 function mousePressed() {
-  if((dist(mouseX,mouseY, 500,320) < 50)&&(estado=="inicio")){
-    estado="juego";
-  }else
-    if(estado=="fin"){
-      estado="inicio";
-      p1=0;
-      p2=0;
-    }  
- 
+  if (estado == "inicio") {
+    if (clic(bx3, by1)) {
+      estado = "juego";
+    } else if (clic(bx1, by2)) {
+      estado = "creditos";
+    }else if (clic(bx2,by2)){
+      estado = "reglas";
+    } else if (estado == "fin") {
+      estado = "inicio";
+      p1 = 0;
+      p2 = 0;
+    }
+  }
 }
