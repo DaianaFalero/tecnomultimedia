@@ -193,18 +193,3 @@ function mousePressed() {
   }
 }
   
-function mousePressed() {
-  if (estado == "inicio") {
-    if (clic(bx3, by1)) {
-      estado = "juego";
-    } else if (clic(bx1, by2)) {
-      estado = "creditos";
-    }else if (clic(bx2,by2)){
-      estado = "reglas";
-    } else if (estado == "fin") {
-      estado = "inicio";
-      p1 = 0;
-      p2 = 0;
-    }
-  }
-}
