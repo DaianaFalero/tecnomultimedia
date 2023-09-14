@@ -111,7 +111,7 @@ function jugar(){
   text("Jugador 2:", 320,30);
   text(p2, 480,30);
  
-  if((p1 == 1)||(p2 == 1)){ /// cantidad de puntos para ganar
+  if((p1 == 7)||(p2 == 7)){ /// cantidad de puntos para ganar
    
    estado = "fin";
   }  
