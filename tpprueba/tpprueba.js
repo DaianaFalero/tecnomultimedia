@@ -3,19 +3,18 @@
 //comision 1
 
 let estado="inicio";
-let fondo,btn,pos1=100,pos2=100,x=300,y=200,dirX = 1, dirY=-1,p1=0, p2=0;
-let bx1=50;
-let bx2=200;
-let bx3=460;//INICIAR
-let by1=280
-let by2=280//INICIAR
+let fondo,pos1=100,pos2=100,x=300,y=200,direcX = 1, direcY=-1,p1=0, p2=0;
+let bx1=100;
+let bx2=250;
+let bx3=525;//INICIAR
+let by=330//INICIAR
 
 
 
 
 function preload(){
 fondo = loadImage ("./data/fondo.png");
-btn = loadImage ("./data/boton.png");
+
 
 }
 
@@ -27,7 +26,7 @@ function clic(x, y){
  
   let ok=false;
  
-   if(dist(x,y,mouseX,mouseY) < 40){
+   if(dist(x,y,mouseX,mouseY) < 55){
      //(mouseX>0 && mouseX<100 && mouseY>380 && mouseY<480) 
          ok = true;
          }
@@ -65,16 +64,16 @@ function jugar(){
      }
  
  
-   x = x+(2.5 * dirX); // velocidad de la pelota en x
-  y = y+(2.5 * dirY);// velocidad en y
+   x = x+(2.5 * direcX); // velocidad de la pelota en x
+  y = y+(2.5 * direcY);// velocidad en y
  
   if(y > height)
     {
-     dirY = -1;
+     direcY = -1;
     }
    if(y < 0)
     {
-     dirY = 1;
+     direcY = 1;
     }
   //Rebote bolita contra el jugador 1 Izq Mouse y puntaje
  
@@ -82,7 +81,7 @@ function jugar(){
     {
       if(y > pos1 &&  y < pos1 +40)
       {
-       dirX = 1;
+       direcX = 1;
       }
       if(x < 20)
       {
@@ -96,7 +95,7 @@ function jugar(){
     {
       if(y > pos2 && y < pos2 +40)
       {
-       dirX = -1;
+       direcX = -1;
       }
       if(x > width -20)
       {
@@ -112,7 +111,7 @@ function jugar(){
   text("Jugador 2:", 320,30);
   text(p2, 480,30);
  
-  if((p1 == 5)||(p2 == 5)){ /// cantidad de puntos para ganar
+  if((p1 == 1)||(p2 == 1)){ /// cantidad de puntos para ganar
    
    estado = "fin";
   }  
@@ -122,20 +121,26 @@ function draw() {
 
   if(estado == "inicio"){
     image(fondo,0,0);
-    image(btn,bx3,by2,120,100);
+    //image(btn,bx3,by2,120,100);
+     noStroke();
+    ellipse(bx3,by,120,100);
     textSize(25);
     fill(255,255,255);
     text ("INICIAR",480,340);
     
-    image(btn,50,300,120,70);
+   // image(btn,50,300,120,70);
+   fill(254,150,247);
+    ellipse(bx1,by,120,100);
      textSize(20);
     fill(255,255,255);
-    text ("Creditos",80,340);
+    text ("Creditos",65,340);
     
-    image(btn,200,300,120,70);
+    //image(btn,200,300,120,70);
+     fill(254,150,247);
+     ellipse(bx2,by,120,100);
      textSize(20);
     fill(255,255,255);
-    text ("Reglas",230,340);
+    text ("Reglas",220,340);
     
    // ellipse(515,330,120,100);
     fill(254,150,247);
@@ -152,15 +157,21 @@ function draw() {
       background(254,150,247);
       textSize(20);
       fill(255,255,255);
-      text('Juego originalmente creado por Allan Alcorn, este videojuego\n  fue programado por Falero Daiana',20,height/6);
-     
+      text('Juego originalmente creado por Allan Alcorn, este videojuego fue programado por Falero Daiana',10,20,600);
+      textSize (15);
+      text ("clic para volver al menú", 210,350);
+          
     }else 
     if(estado == "reglas" ){
       background(254,150,247);
       textSize(20);
       fill(255.255,255);
-      text("las reglas del juego son:",50,50);
-    } else
+      text("Las reglas del juego son:",10,20);
+      text("En el modo clásico, tu único objetivo es tratar de pasar la pelota por la paleta de tu oponente. El primer jugador en anotar siete puntos gana el juego. En cada ronda, la pelota se servirá al jugador que no anotó el punto. Si sos el jugador 2, usarás las teclas de flecha para controlar la barra en el lado derecho, si sos el jugador 1, el lado izquierdo se controla con las teclas A y Z ",10,30,600);
+      textSize (15);
+       text ("clic para volver al menú", 210,350);
+          
+  } else
       if(estado == "fin"){
          background(254,150,247);
        textSize(50)
@@ -168,10 +179,13 @@ function draw() {
          text("¡GANA JUGADOR UNO!",20,height/2);
           textSize(15);
          text ("clic para volver al menú", 210,350);
+       
          }else{
             text("¡GANA JUGADOR DOS!",20,height/2);
              textSize(15);
            text ("clic para volver al menú", 210,350);
+          
+           
      }         
   }  
 }
@@ -179,17 +193,25 @@ function draw() {
   
 function mousePressed() {
   if (estado == "inicio") {
-    if (clic(bx3, by2)) {
+    if (clic(bx3, by)) {
       estado = "juego";
-    } else if (clic(bx1, by1)) {
+    } else if (clic(bx1, by)) {
       estado = "creditos";
-    }else if (clic(bx2,by1)){
+    } else if (clic(bx2, by)) {
       estado = "reglas";
-    } else if (estado == "fin") {
-      estado = "inicio";
-      p1 = 0;
-      p2 = 0;
     }
-  }
+  } else if (estado == "juego") {
+    // Lógica del juego
+  } else if (estado == "fin") {
+    estado = "inicio"; // Cambiar al estado "inicio" desde la pantalla de fin
+  } else if (estado == "creditos") {
+    estado = "inicio"; // Cambiar al estado "inicio" desde la pantalla de créditos
+  } else if  (estado == "reglas"){
+  estado= "inicio";
+  } else if (estado == "inicio") {
+    if (clic(bx3, by)) {
+      estado = "juego";
 }
-  
+}
+}
+
