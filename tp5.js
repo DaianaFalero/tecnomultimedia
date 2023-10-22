@@ -1,18 +1,34 @@
+//FALERO DAIANA
+//TP5
+//COMISION 1
+//No está terminado, me faltan ajustar algunas cosas
+
 let estado="inicio";
 let mouns,fondo,btn,pos1=100,pos2=100,x=300,y=200,dirX = 1, dirY=-1,p1=0, p2=0;
+let bx3=525;//INICIAR
+let by=330
+
 
 function preload(){
 fondo = loadImage ("./data/fondo.jpg");
-btn = loadImage ("./data/boton.png");
+//btn = loadImage ("./data/boton.png");
 }
 
 function setup() {
 createCanvas(600, 400);
 mouns = new Mounstro();
 }
+function clic(x, y){
+ 
+  let ok=false;
+ 
+   if(dist(x,y,mouseX,mouseY) < 55){
+         ok = true;
+         }
+ return ok;
+}  
 
-
-function draw(){
+function jugar(){
   background(0);
   fill(250);
   rect(20, pos1,10,40);
@@ -68,7 +84,7 @@ function draw(){
       if(x < 20)
       {
        x = width/2; y= height/2;
-        p2++
+       
       }
     }
  
@@ -82,16 +98,13 @@ function draw(){
       if(x > width -20)
       {
        x = width/2; y= height/2;
-        p1++
+      
       }
     }
   //Texto en pantalla de puntaje
   textSize(20);
   fill(255);
-  text("jugador 1:",20,30);
-  text(p1,170,30);  
-  text("Jugador 2:", 320,30);
-  text(p2, 450,30);
+ 
  
   if((p1 == 5)||(p2 == 5)){
    
@@ -99,3 +112,48 @@ function draw(){
   }  
  
 }  
+function draw (){
+  
+ if(estado == "inicio"){
+      p1=0;
+      p2=0;
+    image(fondo,0,0,600,400);
+    fill(0);
+    ellipse(bx3,by,120,100);
+    textSize(25);
+    fill(255,255,255);
+    text ("INICIAR",480,340);
+    
+    textSize(12);
+    text("Instrucciones:En equipo eliminar al monstruo 5 veces en menos de un minuto,los controles del lado derecho son las flechas y el de la izquierda la A y Z",50,300,400);
+    fill(255);
+    textSize(150);
+    text("PONG",80,height/2);
+
+  }else
+    if(estado == "juego"){
+     
+      jugar();
+    }else
+      if(estado == "fin"){
+         background(0,0,200);
+       textSize(50)
+         if(5 > 0){
+         text("¡GANARON!",20,height/2);
+          textSize(15);
+         text ("clic para volver al menú", 210,350);
+         }
+      }}
+      
+ function mousePressed() {
+  if (estado == "inicio") {
+    if (clic(bx3, by)) {
+      estado = "juego";
+    }
+  } else if (estado == "juego") {
+    // Lógica del juego
+  } else if (estado == "fin") {
+   estado = "inicio"; 
+   
+  }    
+ } 
