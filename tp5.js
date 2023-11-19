@@ -1,3 +1,5 @@
+//Falero Daiana
+//tp5 
 
 let estado="inicio",t;
 let mouns,jue,tim;
