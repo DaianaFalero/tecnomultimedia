@@ -28,11 +28,13 @@ jue.display();
   mouns.colision(jue.posX(), jue.posY());
   tim.display();
   t=tim.time1();
-  if(t > 260 ){
+  if(t > 60 ){//TIEMPO DEL CONTADOR
     estado="perdieron";
   }
   }
    if(estado=="perdieron"){
+       textSize (50);
+       text ("PERDIERON", 150,180);
       background(0,0,100);
    }  
 }  
