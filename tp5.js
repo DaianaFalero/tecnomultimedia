@@ -1,40 +1,32 @@
 //Falero Daiana
-//tp5 
+// tp5 rec
+//https://www.youtube.com/watch?v=0Tli4AROfGU
+let cp;
+let fondo;
+let img;
 
-let estado="inicio",t;
-let mouns,jue,tim;
 
-function preload(){
-    this.fondo = loadImage('./data/oceano.jpg');
+
+function preload() {
+  console.log ("carga img"); 
+  fondo = loadImage("data/oceano.jpg");
+  img = loadImage("data/monstruo.png");
 }
 
 function setup() {
-createCanvas(600, 400);
-mouns = new Moustro();
-jue = new Juego();
-tim = new Tiempo();
+  createCanvas(600, 400);
+ 
+ cp = new Claseprincipal(); 
 }
 
+function draw() {
 
-function draw(){
- 
- 
- 
-  if(estado=="inicio"){
-image(fondo,0,0,600,400);
-jue.display();
-  jue.teclado();
-  mouns.display();
-  mouns.colision(jue.posX(), jue.posY());
-  tim.display();
-  t=tim.time1();
-  if(t > 60 ){//TIEMPO DEL CONTADOR
-    estado="perdieron";
-  }
-  }
-   if(estado=="perdieron"){
-       textSize (50);
-       text ("PERDIERON", 150,180);
-      background(0,0,100);
-   }  
+  cp.display();
+}
+
+function mousePressed() {
+
+ cp.mouse();
 }  
+
+
